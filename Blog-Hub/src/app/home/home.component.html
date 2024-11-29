@@ -1,67 +1,80 @@
-<!-- <mat-toolbar style="position: fixed; top: 0;"> -->
-  <mat-toolbar style="position: fixed; top: 0; z-">
+<mat-toolbar style="position: fixed; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center;">
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
 
   <span class="nav-opt"><b><i>Blogy</i></b></span>
-  <!-- <span class="nav-opt">All Blogs</span> -->
+
+  <!-- Search Bar
+  <mat-form-field appearance="fill" class="search-bar" style="flex-grow: 1; max-width: 400px;">
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput placeholder="Search Blogs" [(ngModel)]="searchText">
+  </mat-form-field> -->
+  <span class="example-spacer"></span>
+
+  <div class= "search-bar">
+    <input type="text" placeholder="search">
+    <mat-icon matPrefix>search</mat-icon>
+  </div>
 
   <span class="example-spacer"></span>
-  <a mat-raised-button href="./signin" target="_blank">Signin</a>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <a mat-raised-button href="./signin" >Signin</a>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with settings icon">
     <mat-icon>settings</mat-icon>
   </button>
-
 </mat-toolbar>
 
-
-<!-- cards strating -->
+<!-- Blog Cards Section -->
 <div class="blogcontainer">
   <div class="blogs">
-    
-      <div class="margin">
-        <div class="top-container">
-          <p class="slogan"><b>Hey, we're Blogy.</b> see our thoughts ,stories and ideas.</p>
-          </div>
-        <section *ngFor="let blog of filtered_data">
-          <div class="blog">
-            <mat-card class="example-card" appearance="outlined">
-              <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>{{ blog.author }}</mat-card-title>
-                <mat-card-subtitle>{{ blog.category }}</mat-card-subtitle>
-  <span class="example-spacer"></span>
-                <button mat-button>FOLLOW</button>
-
-              </mat-card-header>
-              <img class="blog-img" mat-card-image [src]="blog.image" alt="image">
-              <mat-card-content>
-                <h2>{{ blog.title }}</h2>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>COMMENT</button>
-                <button mat-button>SHARE</button>
-
-              </mat-card-actions>
-            </mat-card>
-          </div>
-        </section>
+    <div class="margin">
+      <div class="top-container">
+        <p class="slogan"><b>Hey, we're Blogy.</b> See our thoughts, stories, and ideas.</p>
       </div>
+      <section *ngFor="let blog of filtered_data">
+        <div class="blog">
+          <mat-card class="example-card" appearance="outlined">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{ blog.author }}</mat-card-title>
+              <mat-card-subtitle>{{ blog.category }}</mat-card-subtitle>
+              <span class="example-spacer"></span>
+              <button mat-button>FOLLOW</button>
+            </mat-card-header>
+           <a href={{blog.link}}><img  class="blog-img" mat-card-image [src]="blog.image" alt="image"></a>
+            <mat-card-content>
+              <h2>{{ blog.title }}</h2>
+            </mat-card-content>
+            <mat-card-actions>
+              <!-- Like Button with Icon -->
+              <button mat-button>
+                <mat-icon>thumb_up</mat-icon> LIKE
+              </button>
+              <!-- Comment Button with Icon -->
+              <button mat-button>
+                <mat-icon>comment</mat-icon> COMMENT
+              </button>
+              <!-- Share Button with Icon -->
+              <button mat-button>
+                <mat-icon>share</mat-icon> SHARE
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </section>
     </div>
+  </div>
+
+  <!-- Category Section -->
   <div class="category">
-
     <span mat-icon-button class="example-icon favorite-icon ctgry" aria-label="Example icon-button with heart icon">
-      <mat-icon>lists</mat-icon>
+      <mat-icon>list</mat-icon>
       Blog Category
-
-    </span >
+    </span>
     <mat-list>
       <mat-list-item *ngFor="let item of category_list" (click)="data_Onselection(item)">
-        <button mat-button>{{ item }}</button>
+        <button mat-button>{{ item }}</button><hr>
       </mat-list-item>
     </mat-list>
-    <!-- (click)=data_Onselection({{item.catagory}})" -->
   </div>
 </div>

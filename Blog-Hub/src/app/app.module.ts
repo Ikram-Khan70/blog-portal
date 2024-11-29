@@ -18,6 +18,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { textSpanIntersectsWithTextSpan } from 'typescript';
+import { BlogPageComponent } from './home/blog-page/blog-page.component';
+import { MatStepperModule } from '@angular/material/stepper';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -25,14 +30,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     SigninComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    AppComponent,
+    BlogPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule,  MatButtonModule, MatIconModule,
-    MatToolbarModule,MatCardModule,MatTableModule,MatListModule , BrowserModule,
+    MatToolbarModule,MatCardModule,MatTableModule,MatListModule , 
     BrowserAnimationsModule, 
     MatCheckboxModule,
+    MatSelectModule,
+    MatOptionModule ,
+    MatButtonModule,
+    MatStepperModule,
+    // Add this to use mat-option with mat-select
+    
     // FlexLayoutModule
   ],
   

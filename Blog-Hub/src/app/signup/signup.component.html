@@ -1,1 +1,54 @@
-<p>signup works!</p>
+<div class="logo">
+  <img src="./logo.jpg" alt="logo" width="200" height="100">
+
+</div>
+  
+    <div>
+    
+      <h1 style="text-align: center;">Sign Up</h1>
+      <hr>
+    </div>
+<div class="auth-container">
+    
+    <mat-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput placeholder=" First name ,Last name" formControlName="name" required>
+          </mat-form-field>
+          <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput placeholder=" Email" formControlName="email" required>
+        </mat-form-field>
+        <mat-form-field>
+        <mat-label>phone</mat-label>
+        <input matInput placeholder=" phone" formControlName="phone" required>
+      </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" placeholder="Password"
+                   required>
+          </mat-form-field>
+          <mat-form-field>
+          <mat-label> Confirm Password</mat-label>
+          <input matInput formControlName="cnfpassword" placeholder=" Confirm Password"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      <!-- </mat-step> -->
+    <!-- </mat-stepper> -->
+    
+
+<!-- </div> -->

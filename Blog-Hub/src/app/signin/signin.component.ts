@@ -51,7 +51,6 @@ export class SigninComponent {//implements OnInit {
 
 email: string = '';
 password: string = '';
-rememberMe: boolean = false;
 
 constructor(private router: Router) {}
 
