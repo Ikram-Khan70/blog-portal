@@ -18,7 +18,8 @@
   </div>
 
   <span class="example-spacer"></span>
-  <a mat-raised-button href="./signin" >Signin</a>
+  <a *ngIf="!isLoggedIn" mat-raised-button href="./signin" >Signin</a>
+  <a *ngIf="isLoggedIn" >{{UserName}}</a>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with settings icon">
     <mat-icon>settings</mat-icon>
   </button>

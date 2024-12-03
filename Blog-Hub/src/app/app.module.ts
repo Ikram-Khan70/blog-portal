@@ -23,6 +23,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { textSpanIntersectsWithTextSpan } from 'typescript';
 import { BlogPageComponent } from './home/blog-page/blog-page.component';
 import { MatStepperModule } from '@angular/material/stepper';
+import { provideHttpClient } from '@angular/common/http';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -50,7 +51,8 @@ import { MatStepperModule } from '@angular/material/stepper';
   ],
   
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]
 })

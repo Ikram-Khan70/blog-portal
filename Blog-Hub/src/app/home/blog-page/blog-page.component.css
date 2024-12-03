@@ -1,0 +1,15 @@
+.container{
+    /* display:flex; */
+margin: 10px;
+}
+.blog-img{
+height: 400px;
+display: flex;
+justify-content: center;
+overflow: hidden;
+}
+.blog-info{
+   width: 60%;
+   margin: auto;
+   margin-top: 20px; 
+}

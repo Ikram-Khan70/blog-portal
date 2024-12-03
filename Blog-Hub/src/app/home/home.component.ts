@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../users.service';
 
 
 
@@ -7,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
+  isLoggedIn = false;
+  UserName = ''
   current_selection = "All";
   category_list: string[] = ["All"];
   raw_data = [
-    {author:"Misaq Aziz", category:"Foods", image:"./hyderabad-biryani.jpg", title:"Hyderabadi Biryani", link: "https://en.wikipedia.org/wiki/Hyderabadi_biryani"},
-    {author:"Rizwan khan", category:"Foods", image:"./img.5.jfif", title:"Human resource", link: "https://en.wikipedia.org/wiki/Human_resources"},
+    {author:"Misaq Aziz", category:"Foods", image:"./hyderabad-biryani.jpg", title:"Hyderabadi Biryani", link: "./blog"},
+    {author:"Rizwan khan", category:"Foods", image:"./img.5.jfif", title:"Human resource", link: "./blog"},
     {author:"Misaq Aziz", category:"Foods", image:"./hyderabad-biryani.jpg", title:"Hyderabadi Biryani", link: "#"},
     {author:"Ikram khan", category:"Education", image:"./hyderabad-biryani.jpg", title:"Hyderabadi Biryani", link: "#"},
     {author:"Misaq Aziz", category:"Technologies", image:"./hyderabad-biryani.jpg", title:"Hyderabadi Biryani", link: "#"},
@@ -55,14 +58,20 @@ export class HomeComponent implements OnInit{
   ];
   filtered_data: any[] = [];
   
-  constructor() {
+  constructor(
+    private UsersService : UsersService
+  ) {
     const uniqueCategories = [...new Set(this.raw_data.map(item => item.category))];
     this.category_list = ['All', ...uniqueCategories]; // Add 'All' as first option
   }
 
   ngOnInit(): void {
     this.load_data();
+    this.UserName = this.UsersService.getUsername();
+    if(this.UserName != '')
+      this.isLoggedIn = true;
     // this.category_list = this.raw_data.
+    // this.username = this.authService.getUsername();
   }
 
   load_data(): void {
